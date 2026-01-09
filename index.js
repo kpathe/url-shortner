@@ -5,11 +5,19 @@ const healthcheckRouter = require("./routes/healthcheck.routes");
 const urlRouter = require("./routes/url.routes");
 const staticRouter = require("./routes/static.routes");
 const path = require("path");
-const PORT = 8000;
+require("dotenv").config();
+const PORT = process.env.PORT || 8001;
+const mongodburi = `${process.env.MONGODBURI}/url-shortner`;
 
-connectToDB("mongodb://localhost:27017/url-shortner").then(() => {
-  console.log("MongoDB Connected!");
-});
+
+
+try {
+  connectToDB(mongodburi).then(() => {
+    console.log("MongoDB Connected!");
+  });
+} catch (error) {
+  return error;
+}
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
