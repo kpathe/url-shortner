@@ -31,7 +31,7 @@
         background: white;
         padding: 2rem;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
       form {
@@ -80,7 +80,8 @@
         margin-top: 1rem;
       }
 
-      th, td {
+      th,
+      td {
         padding: 0.8rem;
         text-align: left;
         border-bottom: 1px solid #ddd;
@@ -102,20 +103,26 @@
 
     <div class="container">
       <form method="post" action="/url">
-        <input name="url" placeholder="https://example.com" type="url" required />
+        <input
+          name="url"
+          placeholder="https://example.com"
+          type="url"
+          required
+        />
         <button type="submit">Generate Short URL</button>
       </form>
 
       <% if (locals.id) { %>
       <div class="generated-url">
         Generated URL :
-        <a href="http://localhost:8000/url/<%= locals.id %>" target="_blank">
-          http://localhost:8000/url/<%= locals.id %>
+        <a
+          href="https://url-shortner-three-plum.vercel.app/<%= locals.id %>"
+          target="_blank"
+        >
+          https://url-shortner-three-plum.vercel.app/<%= locals.id %>
         </a>
       </div>
-      <% } %>
-
-      <% if (locals.urls) { %>
+      <% } %> <% if (locals.urls) { %>
       <table>
         <thead>
           <tr>
@@ -130,7 +137,10 @@
           <tr>
             <td><%= index+1 %></td>
             <td>
-              <a href="http://localhost:8000/url/<%= item.shortID %>" target="_blank">
+              <a
+                href="https://url-shortner-three-plum.vercel.app/<%= item.shortID %>"
+                target="_blank"
+              >
                 <%= item.shortID %>
               </a>
             </td>
